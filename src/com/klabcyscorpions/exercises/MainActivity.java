@@ -2,6 +2,7 @@ package com.klabcyscorpions.exercises;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -68,11 +70,12 @@ public class MainActivity extends Activity {
 					startActivity(j);
 					break;
 				case R.id.btnDialog:
-					Dialog d = new Dialog(MainActivity.this);
-					d.setTitle("Alert Alert :)");
-					TextView tv = new TextView(MainActivity.this);
-					d.setContentView(tv);
-					d.show();
+					AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+					builder.setTitle("Alert Dialog");
+				    builder.setMessage("Warning Warning");
+					builder.setPositiveButton("OK", null);
+		            builder.setNegativeButton("Cancel", null);
+		            builder.show();
 					break;
 				case R.id.btnMap:
 					Intent o = new Intent(context, Map.class);
@@ -110,4 +113,5 @@ public class MainActivity extends Activity {
       Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
       return super.onOptionsItemSelected(item);
     }	
+
 }
