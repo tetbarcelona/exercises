@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	TextView tvOut;
-	Button btnOk, btnContext, btnCancel,btnSwitch, btnMobile, btnLayout, btnName, btnDialog, btnMap;
+	Button btnOk, btnContext, btnCancel,btnSwitch, btnMobile, btnLayout, btnName, btnDialog, btnMap, btnJson;
 	static Context context;
 	
 
@@ -36,6 +36,7 @@ public class MainActivity extends Activity {
 		btnDialog = (Button) findViewById(R.id.btnDialog);
 		btnName = (Button) findViewById(R.id.btnName);
 		btnMap = (Button) findViewById(R.id.btnMap);
+		btnJson = (Button) findViewById(R.id.btnJson);
 		OnClickListener oclBtn = new OnClickListener() {
 
 			@Override
@@ -81,6 +82,10 @@ public class MainActivity extends Activity {
 					Intent o = new Intent(context, Map.class);
 					startActivity(o);
 					break;
+				case R.id.btnJson:
+					Intent m = new Intent(context, JSONActivity.class);
+					startActivity(m);
+					break;
 				}
 			}
 
@@ -94,6 +99,7 @@ public class MainActivity extends Activity {
 		btnName.setOnClickListener(oclBtn);
 		btnDialog.setOnClickListener(oclBtn);
 		btnMap.setOnClickListener(oclBtn);
+		btnJson.setOnClickListener(oclBtn);
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
