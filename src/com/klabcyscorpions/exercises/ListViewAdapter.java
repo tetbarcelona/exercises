@@ -15,13 +15,17 @@ import android.widget.TextView;
 
 public class ListViewAdapter extends BaseAdapter{
 	
-		 
-	    // Declare Variables
 	    Context context;
-	    LayoutInflater inflater;
 	    ArrayList<HashMap<String, String>> data;
 	    ImageLoader imageLoader;
-	 
+	    
+	    static class ContactsViewHolder {
+	        TextView contactName;
+	        TextView contactLocation;
+	        TextView contactNumber;
+	        ImageView image;
+	    }
+ 
 	    public ListViewAdapter(Context context,
 	            ArrayList<HashMap<String, String>> arraylist) {
 	        this.context = context;
@@ -46,61 +50,63 @@ public class ListViewAdapter extends BaseAdapter{
 	    }
 	 
 	    public View getView(final int position, View convertView, ViewGroup parent) {
-	        // Declare Variables
-	        TextView name;
-	        TextView location;
-	        TextView contact;
-	        ImageView image;
-	 
-	        inflater = (LayoutInflater) context
-	                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	 
-	        View itemView = inflater.inflate(R.layout.listview_item, parent, false);
-	        // Get the position from the results
-	        HashMap<String, String> contactInfo = data.get(position);
-	        contactInfo = data.get(position);
-	 
+	    	ContactsViewHolder viewHolder;
+	    	
+	        if (convertView == null) {
+	    	    LayoutInflater inflater = (LayoutInflater) context
+		                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		        
+		        convertView = inflater.inflate(R.layout.listview_item, parent, false);
+		        viewHolder = new ContactsViewHolder();
 	        // Locate the TextViews in listview_item.xml
-	        name = (TextView) itemView.findViewById(R.id.name); 
-	        location = (TextView) itemView.findViewById(R.id.location); 
-	        contact = (TextView) itemView.findViewById(R.id.contact); 
+	        viewHolder.contactName = (TextView) convertView.findViewById(R.id.name); 
+	        viewHolder.contactLocation = (TextView) convertView.findViewById(R.id.location); 
+	        viewHolder.contactNumber = (TextView) convertView.findViewById(R.id.contact); 
 	        // Locate the ImageView in listview_item.xml
-	        image = (ImageView) itemView.findViewById(R.id.image); 
-	 
+	        viewHolder.image = (ImageView) convertView.findViewById(R.id.image); 
+	       
+	        }else {
+	            viewHolder = (ContactsViewHolder) convertView.getTag();
+	        }
+	        HashMap<String, String> contactInfo = data.get(position);
 	        // Capture position and set results to the TextViews
-	        name.setText(contactInfo.get(JSONActivity.NAME));
-	        location.setText(contactInfo.get(JSONActivity.LOCATION));
-	        contact.setText(contactInfo.get(JSONActivity.CONTACT));
+	        if(contactInfo != null){
+	        viewHolder.contactName.setText(contactInfo.get(JSONActivity.NAME));
+	        viewHolder.contactLocation.setText(contactInfo.get(JSONActivity.LOCATION));
+	        viewHolder.contactNumber.setText(contactInfo.get(JSONActivity.CONTACT));
 	        // Capture position and set results to the ImageView
 	        // Passes flag images URL into ImageLoader.class to download and cache
 	        // images
-	        imageLoader.DisplayImage(contactInfo.get(JSONActivity.IMAGE), image);
+
+	        imageLoader.DisplayImage(contactInfo.get(JSONActivity.IMAGE), viewHolder.image);
 	        // Capture button clicks on ListView items
-	        itemView.setOnClickListener(new OnClickListener() {
+
+	        convertView.setOnClickListener(new OnClickListener() {
 	 
 	            @Override
 	            public void onClick(View v) {
 	                // Get the position from the results
-	                HashMap<String, String> resultp = new HashMap<String, String>();
-	                resultp = data.get(position);
+	                HashMap<String, String> contactInfo = data.get(position);
+	                
 	                // Send single item click data to SingleItemView Class
 	                Intent intent = new Intent(context, SingleItemView.class);
 	                // Pass all data name
-	                intent.putExtra("name", resultp.get(JSONActivity.NAME));
+	                intent.putExtra("name", contactInfo.get(JSONActivity.NAME));
 	                // Pass all data location
-	                intent.putExtra("location", resultp.get(JSONActivity.LOCATION));
+	                intent.putExtra("location", contactInfo.get(JSONActivity.LOCATION));
 	                // Pass all data contact
 	                intent.putExtra("contact",
-	                        resultp.get(JSONActivity.CONTACT));
+	                		contactInfo.get(JSONActivity.CONTACT));
 	                // Pass all data img
-	                intent.putExtra("image", resultp.get(JSONActivity.IMAGE));
+	                intent.putExtra("image", contactInfo.get(JSONActivity.IMAGE));
 	                // Start SingleItemView Class
 	                context.startActivity(intent);
 	 
 	            }
 	        });
 	 
-	        return itemView;
+	       
 	    }
-
+			return convertView;
+	 }
 }
