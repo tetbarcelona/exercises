@@ -9,7 +9,7 @@
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:orientation="vertical" >
 
         <TextView
@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:text="TextView" >
         </TextView>
 
@@ -88,6 +88,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Map" >
+        </Button>
+         <Button
+            android:id="@+id/btnJson"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Json" >
         </Button>
     </LinearLayout>
 </LinearLayout>
