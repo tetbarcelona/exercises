@@ -12,47 +12,42 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 
 public class SingleBitmap extends Activity {
-	Bitmap bmImg = null;
-	String image;
+	ImageView image;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.single_bitmap);
-		
-		new loadImage().execute();
-	}
-	public class loadImage extends AsyncTask<String, String, String>{
+		Bitmap img =(Bitmap)this.getIntent().getParcelableExtra("image");
+		image = (ImageView) findViewById(R.id.image_holder);
+		image.setImageBitmap(img);
+		image.setOnClickListener(new OnClickListener(){
 
-		@Override
-		protected String doInBackground(String... args) {
-			// TODO Auto-generated method stub
-			try {
-				 Intent i = getIntent();
-				 image = i.getStringExtra("image");
-				 URL url = new URL(image);
-	                HttpURLConnection conn = (HttpURLConnection) url
-	                        .openConnection();
-	                conn.setDoInput(true);
-	                conn.connect();
-	                InputStream is = conn.getInputStream();
-	                bmImg = BitmapFactory.decodeStream(is);
-			}catch (IOException e) {
-               /* Log.e("Error",e.getMessage());
-                e.printStackTrace();*/
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				finish();
 			}
-			return null;
-		}
-		@Override
-        protected void onPostExecute(String args) {
-			  final ImageView img = (ImageView) findViewById(R.id.image_holder);
-			  img.setImageBitmap(bmImg); 
-			  Log.v("tina","Image is Set");
-		}
+			
+		});
+		/*image.setOnTouchListener(new OnTouchListener(){
+
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				finish();
+				return true;
+			}
+			
+		});*/
 	}
 
 }

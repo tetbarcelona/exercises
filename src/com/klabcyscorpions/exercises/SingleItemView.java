@@ -105,14 +105,11 @@ public class SingleItemView extends Activity {
 				@Override
 				public boolean onTouch(View v, MotionEvent event) {
 					// TODO Auto-generated method stub
-					Log.v("tet", "CLICKED");
-					if(event.getAction() == MotionEvent.ACTION_DOWN){
+					Log.v("tet", "CLICKED");					
 						Intent i = new Intent(getBaseContext(), SingleBitmap.class);
+						i.putExtra("image", bmImg);
 						startActivity(i);
 						return true;
-					} else
-					return false;
-					
 				}
             	
             });
