@@ -189,7 +189,7 @@ containing a value of this type.
         public static final int windowsmobile_logo=0x7f02001f;
     }
     public static final class id {
-        public static final int action_settings=0x7f05002e;
+        public static final int action_settings=0x7f05002f;
         public static final int btnCancel=0x7f050008;
         public static final int btnContext=0x7f05000c;
         public static final int btnDialog=0x7f05000e;
@@ -212,6 +212,7 @@ containing a value of this type.
         public static final int get_edit_text_value=0x7f05001e;
         public static final int hybrid=0x7f050004;
         public static final int image=0x7f050027;
+        public static final int image_holder=0x7f05002e;
         public static final int imgLogo=0x7f050011;
         public static final int label=0x7f050020;
         public static final int linearLayout1=0x7f050005;
@@ -249,7 +250,8 @@ containing a value of this type.
         public static final int map=0x7f030008;
         public static final int name_activity=0x7f030009;
         public static final int name_activity2=0x7f03000a;
-        public static final int single_item_view=0x7f03000b;
+        public static final int single_bitmap=0x7f03000b;
+        public static final int single_item_view=0x7f03000c;
     }
     public static final class menu {
         public static final int main=0x7f090000;

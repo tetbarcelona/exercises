@@ -7,6 +7,7 @@ import java.net.URL;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -52,7 +53,6 @@ public class SingleItemView extends Activity {
             mProgressDialog.setIndeterminate(false);
             // Show progressdialog
             mProgressDialog.show();
- 
         }
  
         @Override
@@ -81,7 +81,6 @@ public class SingleItemView extends Activity {
                 Log.e("Error", e.getMessage());
                 e.printStackTrace();
             }
- 
             return null;
         }
  
@@ -107,10 +106,11 @@ public class SingleItemView extends Activity {
 				public boolean onTouch(View v, MotionEvent event) {
 					// TODO Auto-generated method stub
 					Log.v("tet", "CLICKED");
-					if(!false){
-						img.setScaleType(ImageView.ScaleType.FIT_XY);
-						
-					}
+					if(event.getAction() == MotionEvent.ACTION_DOWN){
+						Intent i = new Intent(getBaseContext(), SingleBitmap.class);
+						startActivity(i);
+						return true;
+					} else
 					return false;
 					
 				}
