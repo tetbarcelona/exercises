@@ -53,6 +53,12 @@
         </activity>
         <activity android:name="com.klabcyscorpions.exercises.Map">
         </activity>
+        <activity android:name="com.klabcyscorpions.exercises.JSONActivity">
+        </activity>
+            <activity android:name="com.klabcyscorpions.exercises.SingleItemView" >
+        </activity>
+        <activity android:name="com.klabcyscorpions.exercises.SingleBitmap" >
+        </activity>
         <meta-data
           android:name="com.google.android.maps.v2.API_KEY"
           android:value="AIzaSyDWTTTc5YtyCEG6OeSjAR7b46d50JLBpQ8"/>

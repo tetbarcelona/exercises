@@ -2,6 +2,7 @@ package com.klabcyscorpions.exercises;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -9,13 +10,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	TextView tvOut;
-	Button btnOk, btnContext, btnCancel,btnSwitch, btnMobile, btnLayout, btnName, btnDialog, btnMap;
+	Button btnOk, btnContext, btnCancel,btnSwitch, btnMobile, btnLayout, btnName, btnDialog, btnMap, btnJson;
 	static Context context;
 	
 
@@ -34,6 +36,7 @@ public class MainActivity extends Activity {
 		btnDialog = (Button) findViewById(R.id.btnDialog);
 		btnName = (Button) findViewById(R.id.btnName);
 		btnMap = (Button) findViewById(R.id.btnMap);
+		btnJson = (Button) findViewById(R.id.btnJson);
 		OnClickListener oclBtn = new OnClickListener() {
 
 			@Override
@@ -68,15 +71,20 @@ public class MainActivity extends Activity {
 					startActivity(j);
 					break;
 				case R.id.btnDialog:
-					Dialog d = new Dialog(MainActivity.this);
-					d.setTitle("Alert Alert :)");
-					TextView tv = new TextView(MainActivity.this);
-					d.setContentView(tv);
-					d.show();
+					AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+					builder.setTitle("Alert Dialog");
+				    builder.setMessage("Warning Warning");
+					builder.setPositiveButton("OK", null);
+		            builder.setNegativeButton("Cancel", null);
+		            builder.show();
 					break;
 				case R.id.btnMap:
 					Intent o = new Intent(context, Map.class);
 					startActivity(o);
+					break;
+				case R.id.btnJson:
+					Intent m = new Intent(context, JSONActivity.class);
+					startActivity(m);
 					break;
 				}
 			}
@@ -91,6 +99,7 @@ public class MainActivity extends Activity {
 		btnName.setOnClickListener(oclBtn);
 		btnDialog.setOnClickListener(oclBtn);
 		btnMap.setOnClickListener(oclBtn);
+		btnJson.setOnClickListener(oclBtn);
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -110,4 +119,5 @@ public class MainActivity extends Activity {
       Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
       return super.onOptionsItemSelected(item);
     }	
+
 }
