@@ -57,8 +57,8 @@ public class ListViewAdapter extends BaseAdapter{
 	 
 	        View itemView = inflater.inflate(R.layout.listview_item, parent, false);
 	        // Get the position from the results
-	        HashMap<String, String> resultp = new HashMap<String, String>();
-	        resultp = data.get(position);
+	        HashMap<String, String> contactInfo = data.get(position);
+	        contactInfo = data.get(position);
 	 
 	        // Locate the TextViews in listview_item.xml
 	        name = (TextView) itemView.findViewById(R.id.name); 
@@ -68,13 +68,13 @@ public class ListViewAdapter extends BaseAdapter{
 	        image = (ImageView) itemView.findViewById(R.id.image); 
 	 
 	        // Capture position and set results to the TextViews
-	        name.setText(resultp.get(JSONActivity.NAME));
-	        location.setText(resultp.get(JSONActivity.LOCATION));
-	        contact.setText(resultp.get(JSONActivity.CONTACT));
+	        name.setText(contactInfo.get(JSONActivity.NAME));
+	        location.setText(contactInfo.get(JSONActivity.LOCATION));
+	        contact.setText(contactInfo.get(JSONActivity.CONTACT));
 	        // Capture position and set results to the ImageView
 	        // Passes flag images URL into ImageLoader.class to download and cache
 	        // images
-	        imageLoader.DisplayImage(resultp.get(JSONActivity.IMAGE), image);
+	        imageLoader.DisplayImage(contactInfo.get(JSONActivity.IMAGE), image);
 	        // Capture button clicks on ListView items
 	        itemView.setOnClickListener(new OnClickListener() {
 	 
