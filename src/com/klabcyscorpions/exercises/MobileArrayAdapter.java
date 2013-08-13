@@ -13,6 +13,10 @@ package com.klabcyscorpions.exercises;
 		private final Context context;
 		private final String[] values;
 	 
+		static class mobileViewHolder {
+	        TextView mobileText;
+	        ImageView mobileImage;
+	    }
 		public MobileArrayAdapter(Context context, String[] values) {
 			super(context, R.layout.list_mobile, values);
 			this.context = context;
@@ -21,13 +25,17 @@ package com.klabcyscorpions.exercises;
 	 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
+			mobileViewHolder viewHolder;
+			
+			if(convertView == null){
 			LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	 
-			View rowView = inflater.inflate(R.layout.list_mobile, parent, false);
-			TextView textView = (TextView) rowView.findViewById(R.id.label);
-			ImageView imageView = (ImageView) rowView.findViewById(R.id.logo);
-			textView.setText(values[position]);
+			
+			convertView = inflater.inflate(R.layout.list_mobile, parent, false);
+			viewHolder = new mobileViewHolder();
+			viewHolder.mobileText = (TextView) convertView.findViewById(R.id.label);
+			viewHolder.mobileImage = (ImageView) convertView.findViewById(R.id.logo);
+			viewHolder.mobileText.setText(values[position]);
 	 
 			// Change icon based on name
 			String s = values[position];
@@ -35,16 +43,16 @@ package com.klabcyscorpions.exercises;
 			System.out.println(s);
 	 
 			if (s.equals("WindowsMobile")) {
-				imageView.setImageResource(R.drawable.windowsmobile_logo);
+				viewHolder.mobileImage.setImageResource(R.drawable.windowsmobile_logo);
 			} else if (s.equals("iOS")) {
-				imageView.setImageResource(R.drawable.ios_logo);
+				viewHolder.mobileImage.setImageResource(R.drawable.ios_logo);
 			} else if (s.equals("Blackberry")) {
-				imageView.setImageResource(R.drawable.blackberry_logo);
+				viewHolder.mobileImage.setImageResource(R.drawable.blackberry_logo);
 			} else {
-				imageView.setImageResource(R.drawable.android_logo);
+				viewHolder.mobileImage.setImageResource(R.drawable.android_logo);
 			}
-	 
-			return rowView;
+			}
+			return convertView;
 		}
 	}
-
+	
