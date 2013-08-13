@@ -31,7 +31,6 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent i = null;
-				i = new Intent();
 				// TODO Auto-generated method stub
 				switch (v.getId()) {
 				case R.id.btnOk:
