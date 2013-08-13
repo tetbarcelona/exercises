@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent();
+				Intent i = null;
 				// TODO Auto-generated method stub
 				switch (v.getId()) {
 				case R.id.btnOk:
@@ -70,9 +70,10 @@ public class MainActivity extends Activity {
 					i = new Intent(context, JSONActivity.class);
 					break;
 				}
-				startActivity(i);
+				if (i != null){
+					startActivity(i);
+				}
 			}
-
 		};
 		findViewById(R.id.btnCancel).setOnClickListener(clickButton);
 		findViewById(R.id.btnOk).setOnClickListener(clickButton);
