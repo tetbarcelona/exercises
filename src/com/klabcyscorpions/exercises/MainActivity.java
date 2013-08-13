@@ -18,7 +18,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 	TextView tvOut;
 	static Context context;
-	Intent i = null;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,7 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
+				Intent i = null;
 				i = new Intent();
 				// TODO Auto-generated method stub
 				switch (v.getId()) {
@@ -77,9 +78,7 @@ public class MainActivity extends Activity {
 					startActivity(i);
 					break;
 				}
-				
 			}
-			
 		};
 		findViewById(R.id.btnCancel).setOnClickListener(clickButton);
 		findViewById(R.id.btnOk).setOnClickListener(clickButton);
