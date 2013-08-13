@@ -46,7 +46,6 @@ import android.widget.TextView;
 	        }
 			String s = values[position];
 			viewHolder.mobileText.setText(s);
-			//System.out.println(s);
 			if(s != null) {
 				if (s.equals("WindowsMobile")) {
 					viewHolder.mobileImage.setImageResource(R.drawable.windowsmobile_logo);
