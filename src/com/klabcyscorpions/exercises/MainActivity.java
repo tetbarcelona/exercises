@@ -70,7 +70,7 @@ public class MainActivity extends Activity {
 					i = new Intent(context, JSONActivity.class);
 					break;
 				}
-				if (i !=null){
+				if (i != null){
 					startActivity(i);
 				}
 			}
