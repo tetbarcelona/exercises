@@ -42,23 +42,18 @@ public class MainActivity extends Activity {
 					break;
 				case R.id.btnSwitch:
 					i = new Intent(context, ListFruitActivity.class);
-					startActivity(i);
 					break;
 				case R.id.btnMobile:
 					i = new Intent(context, ListMobileActivity.class);
-					startActivity(i);
 					break;
 				case R.id.btnLayout:
 					i = new Intent(context, LayoutElements.class);
-					startActivity(i);
 					break;
 				case R.id.btnContext:
 					i = new Intent(context, ContextMenu.class);
-					startActivity(i);
 					break;
 				case R.id.btnName:
 					i= new Intent(context, NameActivity.class);
-					startActivity(i);
 					break;
 				case R.id.btnDialog:
 					AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -70,12 +65,13 @@ public class MainActivity extends Activity {
 					break;
 				case R.id.btnMap:
 					i = new Intent(context, Map.class);
-					startActivity(i);
 					break;
 				case R.id.btnJson:
 					i = new Intent(context, JSONActivity.class);
-					startActivity(i);
 					break;
+				}
+				if (i !=null){
+					startActivity(i);
 				}
 			}
 		};
