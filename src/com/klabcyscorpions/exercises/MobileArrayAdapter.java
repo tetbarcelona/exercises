@@ -1,18 +1,23 @@
 package com.klabcyscorpions.exercises;
 
 
-	import android.content.Context;
-	import android.view.LayoutInflater;
-	import android.view.View;
-	import android.view.ViewGroup;
-	import android.widget.ArrayAdapter;
-	import android.widget.ImageView;
-	import android.widget.TextView;
+	import java.util.ArrayList;
+import java.util.HashMap;
+
+import com.klabcyscorpions.exercises.ListViewAdapter.ContactsViewHolder;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 	 
 	public class MobileArrayAdapter extends ArrayAdapter<String> {
 		private final Context context;
-		private final String[] values;
-	 
+		private final String[] values;		
+		
 		static class mobileViewHolder {
 	        TextView mobileText;
 	        ImageView mobileImage;
@@ -36,21 +41,24 @@ package com.klabcyscorpions.exercises;
 			viewHolder.mobileText = (TextView) convertView.findViewById(R.id.label);
 			viewHolder.mobileImage = (ImageView) convertView.findViewById(R.id.logo);
 			viewHolder.mobileText.setText(values[position]);
-	 
+			}
+			else {
+	            viewHolder = (mobileViewHolder) convertView.getTag();
+	        }
+			
 			// Change icon based on name
 			String s = values[position];
-	 
 			System.out.println(s);
-	 
-			if (s.equals("WindowsMobile")) {
-				viewHolder.mobileImage.setImageResource(R.drawable.windowsmobile_logo);
-			} else if (s.equals("iOS")) {
-				viewHolder.mobileImage.setImageResource(R.drawable.ios_logo);
-			} else if (s.equals("Blackberry")) {
-				viewHolder.mobileImage.setImageResource(R.drawable.blackberry_logo);
-			} else {
-				viewHolder.mobileImage.setImageResource(R.drawable.android_logo);
-			}
+			if(s != null) {
+				if (s.equals("WindowsMobile")) {
+					viewHolder.mobileImage.setImageResource(R.drawable.windowsmobile_logo);
+				} else if (s.equals("iOS")) {
+					viewHolder.mobileImage.setImageResource(R.drawable.ios_logo);
+				} else if (s.equals("Blackberry")) {
+					viewHolder.mobileImage.setImageResource(R.drawable.blackberry_logo);
+				} else {
+					viewHolder.mobileImage.setImageResource(R.drawable.android_logo);
+				}
 			}
 			return convertView;
 		}
