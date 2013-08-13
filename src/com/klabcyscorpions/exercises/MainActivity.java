@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	TextView tvOut;
-	Button btnOk, btnContext, btnCancel,btnSwitch, btnMobile, btnLayout, btnName, btnDialog, btnMap, btnJson;
 	static Context context;
 	
 
@@ -26,21 +25,12 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		tvOut = (TextView) findViewById(R.id.tvOut);
-		btnOk = (Button) findViewById(R.id.btnOk);
-		btnCancel = (Button) findViewById(R.id.btnCancel);
-		btnSwitch = (Button) findViewById(R.id.btnSwitch);
 		context = this.getApplicationContext();
-		btnMobile = (Button) findViewById(R.id.btnMobile);
-		btnLayout = (Button) findViewById(R.id.btnLayout);
-		btnContext = (Button) findViewById(R.id.btnContext);
-		btnDialog = (Button) findViewById(R.id.btnDialog);
-		btnName = (Button) findViewById(R.id.btnName);
-		btnMap = (Button) findViewById(R.id.btnMap);
-		btnJson = (Button) findViewById(R.id.btnJson);
-		OnClickListener oclBtn = new OnClickListener() {
+		OnClickListener clickButton = new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
+				Intent i = new Intent();
 				// TODO Auto-generated method stub
 				switch (v.getId()) {
 				case R.id.btnOk:
@@ -51,24 +41,19 @@ public class MainActivity extends Activity {
 					tvOut.setText("Cancel button was clicked");
 					break;
 				case R.id.btnSwitch:
-					Intent i = new Intent(context, ListFruitActivity.class);
-					startActivity(i);
+					i = new Intent(context, ListFruitActivity.class);
 					break;
 				case R.id.btnMobile:
-					Intent p = new Intent(context, ListMobileActivity.class);
-					startActivity(p);
+					i = new Intent(context, ListMobileActivity.class);
 					break;
 				case R.id.btnLayout:
-					Intent a = new Intent(context, LayoutElements.class);
-					startActivity(a);
+					i = new Intent(context, LayoutElements.class);
 					break;
 				case R.id.btnContext:
-					Intent s = new Intent(context, ContextMenu.class);
-					startActivity(s);
+					i = new Intent(context, ContextMenu.class);
 					break;
 				case R.id.btnName:
-					Intent j = new Intent(context, NameActivity.class);
-					startActivity(j);
+					i= new Intent(context, NameActivity.class);
 					break;
 				case R.id.btnDialog:
 					AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -79,27 +64,26 @@ public class MainActivity extends Activity {
 		            builder.show();
 					break;
 				case R.id.btnMap:
-					Intent o = new Intent(context, Map.class);
-					startActivity(o);
+					i = new Intent(context, Map.class);
 					break;
 				case R.id.btnJson:
-					Intent m = new Intent(context, JSONActivity.class);
-					startActivity(m);
+					i = new Intent(context, JSONActivity.class);
 					break;
 				}
+				startActivity(i);
 			}
 
 		};
-		btnOk.setOnClickListener(oclBtn);
-		btnCancel.setOnClickListener(oclBtn);
-		btnSwitch.setOnClickListener(oclBtn);
-		btnMobile.setOnClickListener(oclBtn);
-		btnLayout.setOnClickListener(oclBtn);
-		btnContext.setOnClickListener(oclBtn);
-		btnName.setOnClickListener(oclBtn);
-		btnDialog.setOnClickListener(oclBtn);
-		btnMap.setOnClickListener(oclBtn);
-		btnJson.setOnClickListener(oclBtn);
+		findViewById(R.id.btnCancel).setOnClickListener(clickButton);
+		findViewById(R.id.btnOk).setOnClickListener(clickButton);
+		findViewById(R.id.btnSwitch).setOnClickListener(clickButton);
+		findViewById(R.id.btnMobile).setOnClickListener(clickButton);
+		findViewById(R.id.btnLayout).setOnClickListener(clickButton);
+		findViewById(R.id.btnContext).setOnClickListener(clickButton);
+		findViewById(R.id.btnDialog).setOnClickListener(clickButton);
+		findViewById(R.id.btnName).setOnClickListener(clickButton);
+		findViewById(R.id.btnMap).setOnClickListener(clickButton);
+		findViewById(R.id.btnJson).setOnClickListener(clickButton);
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
