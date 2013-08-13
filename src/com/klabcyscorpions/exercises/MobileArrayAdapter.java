@@ -40,15 +40,16 @@ import android.widget.TextView;
 			viewHolder = new mobileViewHolder();
 			viewHolder.mobileText = (TextView) convertView.findViewById(R.id.label);
 			viewHolder.mobileImage = (ImageView) convertView.findViewById(R.id.logo);
-			viewHolder.mobileText.setText(values[position]);
 			}
 			else {
 	            viewHolder = (mobileViewHolder) convertView.getTag();
 	        }
 			
+			viewHolder.mobileText.setText(values[position]);
+			
 			// Change icon based on name
 			String s = values[position];
-			System.out.println(s);
+			//System.out.println(s);
 			if(s != null) {
 				if (s.equals("WindowsMobile")) {
 					viewHolder.mobileImage.setImageResource(R.drawable.windowsmobile_logo);
