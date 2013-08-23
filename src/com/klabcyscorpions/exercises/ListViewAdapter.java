@@ -78,7 +78,7 @@ public class ListViewAdapter extends BaseAdapter{
 	        // Passes flag images URL into ImageLoader.class to download and cache
 	        // images
 
-	        imageLoader.DisplayImage(contactInfo.get(JSONActivity.IMAGE), viewHolder.image);
+	        imageLoader.displayImage(contactInfo.get(JSONActivity.IMAGE), viewHolder.image);
 	        // Capture button clicks on ListView items
 
 	        convertView.setOnClickListener(new OnClickListener() {
