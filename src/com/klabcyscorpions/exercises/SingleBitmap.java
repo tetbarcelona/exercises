@@ -38,16 +38,7 @@ public class SingleBitmap extends Activity {
 			}
 			
 		});
-		/*image.setOnTouchListener(new OnTouchListener(){
-
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				// TODO Auto-generated method stub
-				finish();
-				return true;
-			}
-			
-		});*/
+		
 	}
 
 }

@@ -26,6 +26,7 @@ public class JSONActivity extends Activity{
     static String LOCATION = "location";
     static String CONTACT = "contact";
     static String IMAGE = "image";
+    static String LARGE = "large";
  
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,6 +74,7 @@ public class JSONActivity extends Activity{
                     map.put("location", jsonobject.getString("location"));
                     map.put("contact", jsonobject.getString("contact"));
                     map.put("image", jsonobject.getString("image"));
+                    map.put("large", jsonobject.getString("large"));                    
                     // Set the JSON Objects into the array
                     arraylist.add(map);
                 }
