@@ -35,32 +35,68 @@ public class SingleItemView extends Activity {
         super.onCreate(savedInstanceState);
         // Get the view from singleitemview.xml
         setContentView(R.layout.single_item_view);
-
-
-		//Convert JSON image string to Bitmap	
-        try {
- 		URL url = new URL(getIntent().getStringExtra("image"));
+        // Execute loadSingleView AsyncTask
+        new loadSingleView().execute();
+    }
+ 
+    public class loadSingleView extends AsyncTask<String, String, String> {
+ 
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // Create a progressdialog
+            mProgressDialog = new ProgressDialog(SingleItemView.this);
+            // Set progressdialog title
+            mProgressDialog.setTitle("Android JSON Parsing");
+            // Set progressdialog message
+            mProgressDialog.setMessage("Loading...");
+            mProgressDialog.setIndeterminate(false);
+            // Show progressdialog
+            mProgressDialog.show();
+        }
+ 
+        @Override
+        protected String doInBackground(String... args) {
+            try {
+                // Retrieve data from ListViewAdapter on click event
+                Intent i = getIntent();
+                // Get the result of rank
+                name = i.getStringExtra("name");
+                // Get the result of country
+                location = i.getStringExtra("location");
+                // Get the result of population
+                contact = i.getStringExtra("contact");
+                // Get the result of flag
+                image = i.getStringExtra("image");
+ 
+                // Download the Image from the result URL given by flag
+                URL url = new URL(image);
                 HttpURLConnection conn = (HttpURLConnection) url
                         .openConnection();
                 conn.setDoInput(true);
                 conn.connect();
                 InputStream is = conn.getInputStream();
                 bmImg = BitmapFactory.decodeStream(is);
+            } catch (IOException e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return null;
         }
-                catch (IOException e) {
-                    Log.e("Error", e.getMessage());
-                    e.printStackTrace();
-                }
-
-           TextView txtrank = (TextView) findViewById(R.id.name);
+ 
+        @Override
+        protected void onPostExecute(String args) {
+            // Locate the TextViews in singleitemview.xml
+            TextView txtrank = (TextView) findViewById(R.id.name);
             TextView txtcountry = (TextView) findViewById(R.id.location);
             TextView txtpopulation = (TextView) findViewById(R.id.contact);
+            // Locate the ImageView in singleitemview.xml
             final ImageView img = (ImageView) findViewById(R.id.image);
  
-            
-            txtrank.setText(getIntent().getStringExtra("name"));
-            txtcountry.setText(getIntent().getStringExtra("location"));
-            txtpopulation.setText(getIntent().getStringExtra("contact"));
+            // Set results to the TextViews
+            txtrank.setText(name);
+            txtcountry.setText(location);
+            txtpopulation.setText(contact);
  
             // Set results to the ImageView
             img.setImageBitmap(bmImg);      
@@ -77,6 +113,12 @@ public class SingleItemView extends Activity {
 				}
             	
             });
-    }
+ 
+            // Close the progressdialog
+            mProgressDialog.dismiss();
+            
+        }
+       
+    } 
     
 }

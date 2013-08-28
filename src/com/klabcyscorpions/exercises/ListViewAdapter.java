@@ -64,7 +64,7 @@ public class ListViewAdapter extends BaseAdapter{
 	        viewHolder.contactNumber = (TextView) convertView.findViewById(R.id.contact); 
 	        // Locate the ImageView in listview_item.xml
 	        viewHolder.image = (ImageView) convertView.findViewById(R.id.image); 
-	       
+	        convertView.setTag(viewHolder);
 	        }else {
 	            viewHolder = (ContactsViewHolder) convertView.getTag();
 	        }
